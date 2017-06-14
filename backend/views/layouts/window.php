@@ -16,7 +16,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="alert alert-success">
+<body>
 <?php $this->beginBody() ?>
     <header>Моя компания</header>
     <?= $content ?>

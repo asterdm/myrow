@@ -1,8 +1,16 @@
 <?php
-
+use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 $this->title = 'Электронная очередь';
+?>
+<?php
+$script = <<< JS
+$(document).ready(function() {
+    setInterval(function(){ $("#refreshButton").click(); }, 10000);
+});
+JS;
+$this->registerJs($script);
 ?>
 <div class="site-index">
 
@@ -80,4 +88,9 @@ $this->title = 'Электронная очередь';
        
 
     </div>
-</div>
+    </div>
+ </div>
+<?php \yii\widgets\Pjax::begin(); ?>
+<?= Html::a("Обновить", ['main/refresh'], ['class' => 'btn btn-lg btn-primary', 'id' => 'refreshButton']) ?>
+<h1>Сейчас: <?= $time ?></h1>
+<?php \yii\widgets\Pjax::end(); ?>

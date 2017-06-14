@@ -19,20 +19,25 @@ class BoxController extends Controller {
     public function actionIndex(){
         
         $box_number = Yii::$app->request->get('number');
-        
+        if (empty($box_number )) {
+            $box_number = 1;
+        }
         $boxe = new Boxes;
         
         //var_dump($boxes::find()->asArray()->all()[0]);        die();
         
         $data['boxe']  = $boxe::find()->where(['id' => $box_number])->asArray()->one();
         
-        //echo $api_data;die;
-        //var_dump($data);die;
-
         
         $this->layout = 'window';
 
     return $this->render('box',$data);
+    
+    }
+    
+    public function actionRefresh(){
+        
+     
     
     }
 }

@@ -30,17 +30,31 @@
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],                    
+                    ['label' => 'Main', 'icon' => 'chevron-right', 'url' => ['/main']],
+                    [
+                        'label' => 'Box',
+                        'icon' => 'chevron-right',
+                        'url' => ['/box'],
+                        'items' => [
+                            ['label' => 'Box-1', 'icon' => 'file-code-o', 'url' => ['/box/1'],],
+                            ['label' => 'Box-2', 'icon' => 'dashboard', 'url' => ['/box/2'],],
+                            ['label' => 'Box-3', 'icon' => 'file-code-o', 'url' => ['/box/3'],],
+                            ['label' => 'Box-4', 'icon' => 'dashboard', 'url' => ['/box/4'],],
+                            ]
+                        ],
+                    
+                    
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
-                        'label' => 'Same tools',
+                        'label' => 'Panel',
                         'icon' => 'share',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+                            ['label' => 'Panel-1', 'icon' => 'file-code-o', 'url' => ['/panel/1'],],
+                            ['label' => 'Panel-2', 'icon' => 'dashboard', 'url' => ['/panel/2'],],
+                            ['label' => 'Panel-3', 'icon' => 'file-code-o', 'url' => ['/panel/3'],],
+                            ['label' => 'Panel-4', 'icon' => 'dashboard', 'url' => ['/panel/4'],],
                             [
                                 'label' => 'Level One',
                                 'icon' => 'circle-o',
