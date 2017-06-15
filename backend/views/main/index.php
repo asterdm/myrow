@@ -20,7 +20,7 @@ $this->registerJs($script);
         <?php foreach ($boxes as $box) : ?>
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow-active"><i class="ion ion-ios-gear-outline"><?= $box[user_id] ?></i></span>
+            <span class="info-box-icon bg-yellow-active"><i class="ion ion-ios-gear-outline"><?= $box[user_cod] ?></i></span>
            
 
             <div class="info-box-content">

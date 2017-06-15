@@ -21,7 +21,7 @@ class MainController extends Controller {
         //var_dump($boxes::find()->asArray()->all()[0]);        die();
         
         $data['boxes']  = $boxes::find()->asArray()->all();
-        $data['clients']  = $clients::find()->where(['status' => 'free'])   ->asArray()->all();
+        $data['clients']  = $clients::find()->where(['status' => 'new'])->orderBy('user_cod')->asArray()->all();
         $data['time'] = date('H:i:s');
 
     return $this->render('index', $data);

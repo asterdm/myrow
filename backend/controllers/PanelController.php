@@ -16,7 +16,7 @@ class PanelController extends \yii\web\Controller
         //var_dump($box);die;
         
         $data['id'] = $box->id;
-        $data['user_id'] = $box->user_id;
+        $data['user_cod'] = $box->user_cod;
         $data['status'] = $box->status;
         $data['time'] = $box->time;
         return $this->render('manager',$data);

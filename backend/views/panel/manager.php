@@ -7,7 +7,7 @@
 
 <div style="text-align: center" class="small-box bg-aqua">
             <div class="inner">
-              <h3><?= $user_id ?></h3>
+              <h3><?= $user_cod ?></h3>
 
               <p><?= $status ?></p>
             </div>
