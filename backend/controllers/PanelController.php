@@ -24,8 +24,18 @@ class PanelController extends \yii\web\Controller
     
     public function actionNext() {
         // меняем статус бокса на free, если было waiting или work то клиенту done
-        $number = Yii::$app->request->post('box_id');//$_POST["box_id"]
-        echo 'все четка'.$number;die;
+        $number = Yii::$app->request->post('box_id');
+        
+        $box = Boxes::findOne($number);
+        $box->status = 'free';
+        $box->update(FALSE);
+        
+        $client = Clients::findOne($box->user_id);
+        if ($client) {
+            $client->status = 'done';
+            $client->update(FALSE);
+        }
+        
         
     }
     

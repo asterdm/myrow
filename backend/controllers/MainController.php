@@ -21,7 +21,7 @@ class MainController extends Controller {
         //var_dump($boxes::find()->asArray()->all()[0]);        die();
         
         $data['boxes']  = $boxes::find()->asArray()->all();
-        $data['clients']  = $clients::find()->asArray()->all();
+        $data['clients']  = $clients::find()->where(['status' => 'free'])   ->asArray()->all();
         $data['time'] = date('H:i:s');
 
     return $this->render('index', $data);
@@ -34,29 +34,34 @@ class MainController extends Controller {
         // добавить номер клиента в свободный бокс и поменять статус на ожидание
         //$boxe = new Boxes;        
         $free_box = Boxes::find()
-                ->where(['status' => 'free'])
+                ->where(['status' => 'free'])                
                 ->one();
-        //var_dump($free_box);die;
+        
         if (!$free_box) {
-           return $this->redirect('http://myrow/admin/main');
+           return $this->redirect(\yii\helpers\Url::toRoute('/main'));
         }
 
-        //$clients = new Clients;
         $free_client = Clients::find()
                 ->where(['status' => 'new'])
-                ->orderBy('id')
+                ->orderBy('user_cod')
                 ->one();
+        
+        if (!$free_client) {
+           return $this->redirect(\yii\helpers\Url::toRoute('/main'));
+        }
         
         $free_box->status = 'waiting';
         $free_box->time = date('H:i:s');
-        $free_box->user_id = $free_client->user_cod;
+        $free_box->user_cod = $free_client->user_cod;
+        $free_box->user_id = $free_client->id;
+        // нужно уточнить как связать две таблицы по user_id, чтобы не  перезаписывать
         $free_box->update(FALSE);
         
         $free_client->status = 'waiting';
         $free_client->box_id = $free_box->id ;
         $free_client->update(FALSE);
         
-        return $this->redirect('http://myrow/admin/main');
+        return $this->redirect(\yii\helpers\Url::toRoute('/main'));
         
         
         
