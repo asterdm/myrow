@@ -19,7 +19,8 @@
 
 <div class="btn-group btn-group-justified">
   <div class="btn-group">
-    <button type="button" class="btn btn-default">Следующий клиент</button>
+    
+      <button type="button" class="btn btn-default" onclick="clickNext(<?= $id ?>)">Следующий клиент</button>
   </div>
   <div class="btn-group">
     <button type="button" class="btn btn-default">В работу</button>
@@ -28,3 +29,20 @@
     <button type="button" class="btn btn-default">Деактивировать</button>
   </div>
 </div>
+
+
+<script>
+function clickNext(boxNumber){
+    $.post(
+  "<?= \yii\helpers\Url::toRoute(['panel/next','number' => $id]) ?>",
+  {
+    box_id: boxNumber
+
+  }
+);
+}    
+    
+    
+    
+    
+</script>

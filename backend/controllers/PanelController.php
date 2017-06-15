@@ -21,5 +21,22 @@ class PanelController extends \yii\web\Controller
         $data['time'] = $box->time;
         return $this->render('manager',$data);
     }
+    
+    public function actionNext() {
+        // меняем статус бокса на free, если было waiting или work то клиенту done
+        $number = Yii::$app->request->post('box_id');//$_POST["box_id"]
+        echo 'все четка'.$number;die;
+        
+    }
+    
+    public function actionWork($box_id) {
+        // меняем статус бокса и клиента на working
+        
+    }
+    
+    public function actionDeactiv($box_id) {
+        // меняем статус бокса на deactiv
+        
+    }
 
 }
