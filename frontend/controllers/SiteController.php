@@ -12,6 +12,8 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\OcheredForm;
+use app\models\Clients;
 
 /**
  * Site controller
@@ -72,7 +74,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $form = new OcheredForm;
+        $form->servises = [
+            'услуга2',
+            'услуга3',
+            'услуга4',
+            'услуга5',
+            'услуга6',
+            
+            ];
+        return $this->render('index',[
+            'model' => $form,
+        ]);
     }
 
     /**
@@ -138,6 +151,9 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        //елси нет ничего то перекидываем
+        $post = Yii::$app->request->post();
+        
         return $this->render('about');
     }
 
